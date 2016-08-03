@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Langue
  *
  * @ORM\Table(name="f_langue", uniqueConstraints={@ORM\UniqueConstraint(name="langue", columns={"langue"})}, indexes={@ORM\Index(name="libelle", columns={"libelle"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\LangueRepository")
  */
 class Langue
 {
@@ -57,7 +57,7 @@ class Langue
     /**
      * Get disques
      *
-     * @return ArrayCollection 
+     * @return ArrayCollection
      */
     public function getDisques()
     {
@@ -80,7 +80,7 @@ class Langue
     /**
      * Get libelle
      *
-     * @return string 
+     * @return string
      */
     public function getLibelle()
     {
@@ -103,7 +103,7 @@ class Langue
     /**
      * Get actif
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActif()
     {
@@ -113,7 +113,7 @@ class Langue
     /**
      * Get langue
      *
-     * @return integer 
+     * @return integer
      */
     public function getLangue()
     {

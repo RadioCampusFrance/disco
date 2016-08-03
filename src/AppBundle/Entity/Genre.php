@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Genre
  *
  * @ORM\Table(name="f_genre", uniqueConstraints={@ORM\UniqueConstraint(name="genre", columns={"genre"})}, indexes={@ORM\Index(name="libelle", columns={"libelle"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\GenreRepository")
  */
 class Genre
 {
@@ -53,7 +53,7 @@ class Genre
     /**
      * Get disques
      *
-     * @return ArrayCollection 
+     * @return ArrayCollection
      */
     public function getDisques()
     {
@@ -76,7 +76,7 @@ class Genre
     /**
      * Get libelle
      *
-     * @return string 
+     * @return string
      */
     public function getLibelle()
     {
@@ -99,7 +99,7 @@ class Genre
     /**
      * Get principal
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getPrincipal()
     {
@@ -109,7 +109,7 @@ class Genre
     /**
      * Get genre
      *
-     * @return integer 
+     * @return integer
      */
     public function getGenre()
     {

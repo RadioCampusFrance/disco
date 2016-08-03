@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Support
  *
  * @ORM\Table(name="f_support", indexes={@ORM\Index(name="libelle", columns={"libelle"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\SupportRepository")
  */
 class Support
 {
