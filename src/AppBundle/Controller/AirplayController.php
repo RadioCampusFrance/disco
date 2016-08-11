@@ -176,13 +176,13 @@ class AirplayController extends DiscoController
         $user = $this->get('security.context')->getToken()->getUser();
         if ($isCreation) {
             $airplay->setCuser($user);
+            $em->persist($airplay);
         }
         $airplay->setMuser($user);
         $airplay->setDmodif(new \DateTime());
 
         $classement = explode(",", $request->request->get('classement'));
 
-        $em->persist($airplay);
         $em->flush();
 
         $cd_to_edit = $em->createQuery(
@@ -193,8 +193,7 @@ class AirplayController extends DiscoController
             ->getResult();
 
         foreach ($cd_to_edit as $key => $cd) {
-            $cd->setAirplay = null;
-            $em->persist($cd);
+            $cd->setAirplay(0);
         }
 
         $em->createQuery(
