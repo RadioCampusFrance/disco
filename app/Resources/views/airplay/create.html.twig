@@ -69,7 +69,7 @@
 								<td class="num_row_airplay visible">{{ordre}}</td>
 								<td class="pochette">
 									{% if cd.img %}
-										<img src="{{ asset(cd.getImgWebPath()) }}">
+										<img src="{{ asset(cd.getImgWebPath())  |imagine_filter('miniature') }}">
 									{% else %}
 										<a href="{{ path('editCd',{'id':cd.cd}) }}" target="_blank">Editer</a>
 									{% endif %}

@@ -132,7 +132,7 @@
 				<div class="col-xs-2" id="div_pochette">
 					<label for="pochette_edit">Pochette actuelle :</label>
 					<div id="pochette_edit">
-						<img src="{{asset(cd.getImgWebPath)}}" style="max-height:100%;max-width:100%;">
+						<img src="{{asset(cd.getImgWebPath) |imagine_filter('miniature') }}" style="max-height:100%;max-width:100%;">
 						<div id="pochette_delete" num="{{cd.cd}}">Cliquer pour supprimer</div>
 					</div>
 				</div>

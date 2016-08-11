@@ -3,7 +3,7 @@
 
 {% block body %}
 	<h1>
-		{% if cd.img %}<img src="{{asset(cd.getImgWebPath)}}" style="max-height:2em;max-width:2em;">{% endif %}
+		{% if cd.img %}<img src="{{asset(cd.getImgWebPath) |imagine_filter('miniature') }}" style="max-height:2em;max-width:2em;">{% endif %}
 		Fiche de disque
 		<small>
 			{{cd.getTitre}} de {{cd.getArtiste.getLibelle}} (#{{cd.getCD}})
