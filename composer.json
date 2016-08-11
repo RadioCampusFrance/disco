@@ -23,7 +23,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/jsrouting-bundle": "~1.5",
         "ensepar/html2pdf-bundle": "dev-master",
-        "mayeco/fpdf-bundle": "1.0.*@dev"
+        "mayeco/fpdf-bundle": "1.0.*@dev",
+        "liip/imagine-bundle": "^1.6"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
