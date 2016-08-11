@@ -1347,7 +1347,7 @@ class Cd
         $this->file->move($this->getUploadRootDir(), $this->getAbsolutePath());
 
         if ($this->toBeRemoved != null) {
-            unlink($this->toBeRemoved);
+            @unlink($this->toBeRemoved);
         }
 
         $this->file = null;
