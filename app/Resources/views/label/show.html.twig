@@ -10,7 +10,7 @@
 	            <a href="{{ path('editLabel',{'id':label.getLabel}) }}" class="label label-info">
 					<span class="glyphicon glyphicon-edit"></span> Editer
 				</a>
-				<a onclick="confirmDelLabel('{{label.getLibelle}}',{{label.getLabel}})" class="label label-danger">
+				<a href="#" onclick="return confirmDelLabel('{{label.getLibelle}}',{{label.getLabel}})" class="label label-danger">
 					<span class="glyphicon glyphicon-remove"></span> Supprimer
 				</a>
 			{% endif %}
