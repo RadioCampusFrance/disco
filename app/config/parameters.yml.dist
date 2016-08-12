@@ -25,5 +25,12 @@ parameters:
     #  path to CD covers, relative to our Entity folder, so slash at the end or beginning
     upload_root_dir:     ../../../web
 
+    # path to web server's public root
+    web_root: %kernel.root_dir%/../web
+
+    # path to disco's public files root  (same as web_root if disco is on /)
+    web_app_root:	%web_root%
+
+
     # addresse d'origine des e-mails de retour d'écoute aux labels
     retourLabelFromAddress: programmation@campusgrenoble.org

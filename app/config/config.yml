@@ -86,9 +86,15 @@ services:
            - { name: twig.extension }
 
 liip_imagine:
+    loaders:
+        default:
+            filesystem:
+              data_root: %web_root%
     resolvers:
         default:
-            web_path: ~
+            web_path:
+              web_root: %web_app_root%
+              cache_prefix: media/cache
 
     filter_sets:
         cache: ~
