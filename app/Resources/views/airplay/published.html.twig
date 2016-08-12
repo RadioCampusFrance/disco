@@ -16,7 +16,7 @@
 		<div class="ligne_classement">
 			<div class="pochette_cd">
 				<img src="{{asset(ac.cd.getImgWebPath()) |imagine_filter('miniature') }}" alt="pochette {{ac.cd.artiste.libelle}} - {{ac.cd.titre}}">
-				<span class="rank_cd {% if ac.cd.getDsaisie|date("U") > "-3 months"|date("U") %}new_cd{% endif %}">#{{ac.ordre}}</span>
+				{# <span class="rank_cd {% if ac.cd.getDsaisie|date("U") > "-3 months"|date("U") %}new_cd{% endif %}">#{{ac.ordre}}</span> #}
 			</div>
 			<div class="informations_cd">
 				<div class="titre_cd">
