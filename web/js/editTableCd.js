@@ -3,6 +3,7 @@ function bindAddCd(new_row) {
 	$("#addCd").submit(function(event) {
 		event.preventDefault();
 			var id = $("#newCD").val();
+			var addDown = $('#addDown').is(':checked');
 
 			var route = Routing.generate('getInfosCd', {'id': id})
 			$.get(route, function(cd){
@@ -29,8 +30,12 @@ function bindAddCd(new_row) {
 							.replace(':type', cd.type)
 							.replace(':ecoute', cd.ecoute ? cd.ecoute : "")
 							.replace(':commentaire', cd.commentaire)
-							.replace(':img', img)
-						$("#liste_cd tbody").prepend(content);
+							.replace(':img', img);
+						if (addDown) {
+							$("#liste_cd tbody").append(content);
+						} else {
+							$("#liste_cd tbody").prepend(content);
+						}
 						classer();
 						editNumRow();
 					} else {
