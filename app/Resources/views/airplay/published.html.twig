@@ -10,9 +10,10 @@
 	les plus défendus par l’équipe de programmation de la radio.
 </p>
 {% set id = 0 %}
-{% for airplay in airplays %}
+{% for liste in listes %}
+	{% set airplay = liste[0].airplay %}
 	<h1>{{airplay.libelle}}</h1>
-	{% for ac in listes[id] %}
+	{% for ac in liste %}
 		<div class="ligne_classement">
 			<div class="pochette_cd">
 				<img src="{{asset(ac.cd.getImgWebPath()) |imagine_filter('miniature') }}" alt="pochette {{ac.cd.artiste.libelle}} - {{ac.cd.titre}}">
@@ -70,6 +71,23 @@
 {% endfor %}
 {% endif %}
 
+<p>
+	<a href="#" id="showOld">Anciens airplays...</a>
+</p>
+
+<div id="anciensAirplays" style="display:none;">
+	<h2>Anciens airplays</h2>
+	<ul>
+	{% for airplay in airplays %}
+		<li>
+			<a href="{{path('publishedCd',{'id':airplay.airplay})}}">
+				{{ airplay.libelle }}
+			</a>
+		</li>
+	{% endfor %}
+	</ul>
+</div>
+
 
 <script src="{{asset('jquery/js/jquery-1.11.2.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('jquery/js/jquery-ui.min.js')}}" type="text/javascript"></script>
@@ -89,6 +107,11 @@
 		$(this).hide();
 	});
 
+	$("#showOld").click(function(e) {
+		e.preventDefault();
+		$(this).hide();
+		$("#anciensAirplays").show();
+	});
 </script>
 </body>
 </html>

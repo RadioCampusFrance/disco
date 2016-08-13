@@ -99,37 +99,49 @@ class AirplayController extends DiscoController
                 'airplay' => $airplay,
                 'liste' => $liste
             ));
-
     }
 
     /**
-     * @Route("/airplay/published", name="publishedCd")
+     * @Route("/airplay/published/{id}", name="publishedCd", defaults={"id" = null})
      */
-    public function publishedAction()
+    public function publishedAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-            $airplays = $em->getRepository('AppBundle:Airplay')->createQueryBuilder('a')
-                ->andWhere('a.publie = 1')
-                ->orderBy('a.dmodif', 'DESC')
-                ->setMaxResults(2)
-                ->getQuery()
-                ->getResult();
+      $em = $this->getDoctrine()->getManager();
+      $airplays = $em->getRepository('AppBundle:Airplay')->createQueryBuilder('a')
+        ->andWhere('a.publie = 1')
+        ->orderBy('a.dmodif', 'DESC')
+        ->getQuery()
+        ->getResult();
 
-        if(!$airplays) {
-            $this->addFlash('error','Erreur lors du chargement des airplays.');
+      if(!$airplays) {
+        $this->addFlash('error','Erreur lors du chargement des airplays.');
+      } else {
+        $listes = array();
+        if ($id) {
+          $listes[0] = $this->getAirplay($id);
+          if (!$listes[0][0]->getAirplay()->getPublie()) {
+            throw $this->createNotFoundException("Airplay non trouvé");
+          }
         } else {
-            foreach ($airplays as $key => $airplay) {
-                $listes[$key] = $em->getRepository('AppBundle:AirplayCd')->findBy(
-                        array('airplay' => $airplay->getAirplay()),
-                        array('ordre' => 'asc')
-                    );
-            }
+          $listes[0] = $this->getAirplay($airplays[0]->getAirplay());
+          $listes[1] = $this->getAirplay($airplays[1]->getAirplay());
         }
+      }
 
-        return $this->render('airplay/published.html.twig', array(
-                'airplays' => $airplays,
-                'listes' => $listes
-            ));
+      return $this->render('airplay/published.html.twig', array(
+        'airplays' => $airplays,
+        'listes' => $listes
+      ));
+    }
+
+    private function getAirplay($id) {
+      return $this->getDoctrine()
+        ->getManager()
+        ->getRepository('AppBundle:AirplayCd')
+        ->findBy(
+          array('airplay' => $id),
+          array('ordre' => 'asc')
+        );
     }
 
     /**
