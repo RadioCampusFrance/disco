@@ -129,6 +129,7 @@ CREATE TABLE IF NOT EXISTS f_genre (
   genre int(10) unsigned NOT NULL AUTO_INCREMENT,
   libelle varchar(45) NOT NULL DEFAULT '',
   principal tinyint(1) unsigned NOT NULL DEFAULT '0',
+  scheduler_code varchar(45) NULL DEFAULT NULL,
   PRIMARY KEY (genre),
   UNIQUE KEY genre (genre),
   KEY libelle (libelle)

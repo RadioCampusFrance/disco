@@ -36,6 +36,11 @@ class Genre
     private $principal = false;
 
 
+    /**
+     * @var string
+     * @ORM\Column(name="scheduler_code", type="string", length=45, nullable=true)
+     */
+    private $scheduler_code = null;
 
     /**
      * Set disques
@@ -116,4 +121,26 @@ class Genre
         return $this->genre;
     }
 
+    /**
+     * Set scheduler_code
+     *
+     * @param string scheduler_code
+     * @return Genre
+     */
+    public function setSchedulerCode($scheduler_code)
+    {
+        $this->scheduler_code = $scheduler_code;
+
+        return $this;
+    }
+
+    /**
+     * Get scheduler_code
+     *
+     * @return string
+     */
+    public function getSchedulerCode()
+    {
+        return $this->scheduler_code;
+    }
 }
