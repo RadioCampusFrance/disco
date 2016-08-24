@@ -1039,4 +1039,46 @@ class CdController extends DiscoController
         }
     }
 
+    /**
+     * @Route("/cd/{cd}/rivendellInfo", name="rivendellInfo")
+     */
+    public function rivendellInfo(Request $request, $cd)
+    {
+      $em = $this->getDoctrine()->getManager();
+      $cd = $em->getRepository('AppBundle:Cd')->find($cd);
+
+      if ($cd) {
+        $artistCD = $cd->getartiste()->getLibelle();
+
+        $scheduler_codes = [$cd->getGenre()->getSchedulerCode()];
+
+        foreach ($cd->getStyles() as $key => $genre) {
+          $scheduler_codes[] = $genre->getSchedulerCode();
+        }
+
+        $scheduler_codes = array_values(array_unique($scheduler_codes));
+        $pistes = array();
+
+        foreach ($cd->getPistes() as $key => $piste) {
+          $pistes[$piste->getPiste()] = array(
+            "title" => $piste->getTitre(),
+            "artist" => $piste->getArtiste() ? $piste->getArtiste()->getLibelle() : $artistCD,
+            "rivendell" => $piste->getRivendell()
+          );
+        }
+
+        $retour = array(
+          "artist" => $artistCD,
+          "title" => $cd->getTitre(),
+          "scheduler_codes" => $scheduler_codes,
+          "tracks" => $pistes
+        );
+      } else {
+        $retour = array();
+      }
+
+      $response = new JsonResponse();
+      $response->setData($retour);
+      return $response;
+    }
 }
