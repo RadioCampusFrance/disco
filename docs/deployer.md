@@ -2,7 +2,7 @@
 
 - `git clone git@github.com:martinkirch/disco.git disco_tmp`
 - `cd disco_tmp`
-- `curl -s http://getcomposer.org/installer | php`
+- `curl -s https://getcomposer.org/installer | php`
 - `php composer.phar update`, et entrez en passant les paramètres MySQL/SMTP. Pour les autres paramètres, en cas de doute laissez les valeurs par défaut (et en mutualisé chez OVH, voir plus bas)
 - éditer web/app.php : remplacer `/../` par `/../../disco_libs/`.
 - transferts des fichiers :
