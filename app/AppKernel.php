@@ -19,7 +19,8 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Mayeco\fPDFBundle\fPDFBundle(),
-            new Liip\ImagineBundle\LiipImagineBundle()
+            new Liip\ImagineBundle\LiipImagineBundle(),
+            new Oneup\UploaderBundle\OneupUploaderBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

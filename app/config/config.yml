@@ -102,3 +102,9 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [100, 100], mode: outbound }
+
+oneup_uploader:
+    mappings:
+        dropbox:
+            frontend: blueimp
+            namer: disco.dropbox_namer

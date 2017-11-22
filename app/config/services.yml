@@ -22,7 +22,16 @@ services:
         class: AppBundle\Twig\ClassTwigExtension
         tags:
             - { name: twig.extension }
+    
+    disco.dropbox_namer:
+        class:  AppBundle\DropboxNamer
+        arguments: ["@security.token_storage", "@disco.logger"]
 
+    disco.upload_listener:
+        class: AppBundle\DropboxEventListener
+        arguments: []
+        tags:
+            - { name: kernel.event_listener, event: oneup_uploader.post_persist, method: onUpload }
 
     #added on 14/05/2015 in order to remove the 'f_' prefix to the generated entities by Doctrine
     #appbundle.tblprefix_subscriber:

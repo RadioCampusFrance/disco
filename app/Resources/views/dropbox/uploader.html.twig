@@ -1,0 +1,49 @@
+{% block title %}Dropbox{% endblock %}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h2>Choisissez les fichiers à inclure dans "{{upload_name}}"</h2>
+
+<input id="fileupload" type="file" name="files[]" data-url="{{ oneup_uploader_endpoint('dropbox') }}" multiple />
+
+<div id="progress" class="progress">
+    <div class="progress-bar progress-bar-success"></div>
+</div>
+<!-- The container for the uploaded files -->
+<div id="files" class="files"></div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{asset('jquery/js/jquery.iframe-transport.js')}}" type="text/javascript"></script>
+<script src="{{asset('jquery/js/jquery.fileupload.js')}}" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        formData: {'upload_name': "{{upload_name}}"},
+        done: function (e, data) {
+            console.log(data);
+            $.each(data.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo('#files');
+            });
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        },
+        error: function(e, data) {
+            $('<p/>').text(e.responseText)
+                .addClass('alert')
+                .addClass('alert-danger')
+                .appendTo('#files');
+        }
+    });
+});
+</script>
+{% endblock %}
