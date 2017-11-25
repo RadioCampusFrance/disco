@@ -107,4 +107,3 @@ oneup_uploader:
     mappings:
         dropbox:
             frontend: blueimp
-            namer: disco.dropbox_namer

@@ -22,14 +22,10 @@ services:
         class: AppBundle\Twig\ClassTwigExtension
         tags:
             - { name: twig.extension }
-    
-    disco.dropbox_namer:
-        class:  AppBundle\DropboxNamer
-        arguments: ["@security.token_storage", "@disco.logger"]
 
     disco.upload_listener:
         class: AppBundle\DropboxEventListener
-        arguments: []
+        arguments: ["@security.token_storage", "@disco.logger"]
         tags:
             - { name: kernel.event_listener, event: oneup_uploader.post_persist, method: onUpload }
 
