@@ -36,7 +36,7 @@ security:
                 check_path:  /login_check
             remember_me:
                 key:      "%secret%"
-                lifetime: 86400 seconds # 1 day in seconds
+                lifetime: 86400 # 1 day in seconds
                 path:     /
                 domain:   ~
             logout:
