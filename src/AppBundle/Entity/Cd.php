@@ -332,7 +332,6 @@ class Cd
     /**
      * @var string
      *
-     * @Assert\Url()
      * @ORM\Column(name="ecoute", type="string")
      */
     private $ecoute = null;

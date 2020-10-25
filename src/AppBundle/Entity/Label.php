@@ -143,7 +143,6 @@ class Label
      *      max = "150",
      *      maxMessage=" {{ limit }} caractères maximum."
      * )
-     * @Assert\Url(message="Ce champ ne respecte pas le format habituel des URL.")
      * @ORM\Column(name="siteweb", type="string", length=150, nullable=false)
      */
     private $siteweb = '';

@@ -51,7 +51,6 @@ class Artiste
      *      max = "150",
      *      maxMessage=" L'adresse du site web ne doit pas être trop longue : {{ limit }} caractères maximum. Si cela dépasse, utilisez un service de réduction d'URL !"
      * )
-     * @Assert\Url(message="Ce champ ne respecte pas le format habituel des URL.")
      * @ORM\Column(name="siteweb", type="string", length=150, nullable=false)
      */
     private $siteweb = '';
@@ -62,7 +61,6 @@ class Artiste
      *      max = "150",
      *      maxMessage=" L'adresse du site d'écoute ne doit pas être trop longue : {{ limit }} caractères maximum. Si cela dépasse, utilisez un service de réduction d'URL !"
      * )
-     * @Assert\Url(message="Ce champ ne respecte pas le format habituel des URL.")
      * @ORM\Column(name="myspace", type="string", length=150, nullable=false)
      */
     private $myspace = '';
